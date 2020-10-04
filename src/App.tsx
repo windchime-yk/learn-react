@@ -17,13 +17,15 @@ function App() {
   )
 
   // State
-  const [isChecked, setIsChecked] = useState(true)
-  const [actor, setActor] = useState('Ryan Reynolds')
+  const [state, setState] = useState({
+    check: true,
+    actor: actorList[0]
+  })
   const onCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked)
+    setState({...state, check: e.target.checked})
   }
   const onSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setActor(e.target.value)
+    setState({...state, actor: e.target.value})
   }
 
   return (
@@ -69,8 +71,8 @@ function App() {
            */
         }
       </div>
-      <input type="checkbox" checked={isChecked} onChange={onCheck} />
-      <select value={actor} onChange={onSelect}>
+      <input type="checkbox" checked={state.check} onChange={onCheck} />
+      <select value={state.actor} onChange={onSelect}>
         {
           actorList.map((name, i) => (
             <option value={name} key={i}>{name}</option>
