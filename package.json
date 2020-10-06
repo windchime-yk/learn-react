@@ -29,6 +29,19 @@
     "lint:conflict": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "postinstall": "typesync"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.css": [
+      "stylelint --fix"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -59,6 +72,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
     "stylelint": "^13.7.2",
     "stylelint-config-recess-order": "^2.1.0",
