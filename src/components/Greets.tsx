@@ -10,15 +10,12 @@ const Greets: React.FC<Props> = (props) => {
 
   return (
     <span>
-      {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        [...Array(times)].map((_, i) => (
-          <p key={i}>
-            Hello,
-            {name}!{children}
-          </p>
-        ))
-      }
+      {[...Array<number>(times).fill(0)].map((_, i) => (
+        <p key={i}>
+          Hello,
+          {name}!{children}
+        </p>
+      ))}
     </span>
   );
 };
